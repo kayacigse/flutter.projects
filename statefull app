@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Renk Değiştirme Uygulaması',
+      home: RenkDegistir(),
+    );
+  }
+}
+
+class RenkDegistir extends StatefulWidget {
+  @override
+  _RenkDegistirState createState() => _RenkDegistirState();
+}
+
+class _RenkDegistirState extends State<RenkDegistir> {
+  Color _arkaPlanRengi = Colors.white;
+
+  void _renkDegistir() {
+    setState(() {
+      if (_arkaPlanRengi == Colors.yellow) {
+        _arkaPlanRengi = Colors.blueAccent;
+      } else {
+        _arkaPlanRengi = Colors.yellow;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: _arkaPlanRengi,
+      body: Center(
+        child: ElevatedButton(
+          onPressed: _renkDegistir,
+          child: Text('Rengi Değiştir'),
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            textStyle: TextStyle(fontSize: 18),
+          ),
+        ),
+      ),
+    );
+  }
+}
